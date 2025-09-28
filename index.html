@@ -99,6 +99,20 @@
         .form-control::placeholder {
             color: #a0a0a0;
         }
+        
+        /* Otimização Específica para Mobile */
+        /* Reduz o padding dos botões de ação em telas pequenas */
+        @media (max-width: 768px) {
+            .table tbody td button {
+                padding: 0.25rem 0.5rem; /* Botões menores */
+                font-size: 0.75rem; /* Fonte menor */
+                margin-bottom: 2px; /* Espaçamento entre botões */
+            }
+            /* Garante que os botões se alinhem verticalmente se houver pouco espaço */
+            .table td:last-child {
+                 white-space: nowrap; /* Impede que a coluna de botões quebre */
+            }
+        }
     </style>
 </head>
 <body>
@@ -145,30 +159,32 @@
             <div class="card-body">
                 
                 <div class="row mb-4 g-2">
-                    <div class="col-md-4">
+                    <div class="col-12 col-md-4">
                         <input type="text" class="form-control" id="filtro-pedido" placeholder="Filtrar por # Pedido">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-12 col-md-4">
                         <input type="text" class="form-control" id="filtro-endereco" placeholder="Filtrar por Endereço">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-12 col-md-4">
                         <input type="text" class="form-control" id="filtro-cliente" placeholder="Filtrar por # Cliente">
                     </div>
                 </div>
 
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th># Pedido / Descrição</th>
-                            <th># Cliente</th>
-                            <th>Endereço</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="pedidos-tabela-corpo">
-                        </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th># Pedido / Descrição</th>
+                                <th># Cliente</th>
+                                <th>Endereço</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pedidos-tabela-corpo">
+                            </tbody>
+                    </table>
+                </div>
                 <p id="sem-pedidos" class="text-center text-muted mt-3" style="display:none;">Nenhum pedido ativo encontrado.</p>
             </div>
         </div>
@@ -179,20 +195,22 @@
             </div>
             <div class="card-body">
                 <p class="text-muted small">Os filtros acima se aplicam a esta tabela também.</p>
-                <table class="table table-sm table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Data/Hora</th>
-                            <th># Pedido</th>
-                            <th>Ação</th>
-                            <th>De</th>
-                            <th>Para</th>
-                            <th>Detalhes</th>
-                        </tr>
-                    </thead>
-                    <tbody id="historico-tabela-corpo">
-                        </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Data/Hora</th>
+                                <th># Pedido</th>
+                                <th>Ação</th>
+                                <th>De</th>
+                                <th>Para</th>
+                                <th>Detalhes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historico-tabela-corpo">
+                            </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
